@@ -19,7 +19,7 @@ This Go application performs load testing on a web service by sending HTTP reque
 ### Usage
 You can use this application via Docker. Example command:
 ````
-docker run stresser --url=http://example.com --requests=1000 --concurrency=10
+docker run renatafborges/stress-test-golang:v1.0.0 --url=http://google.com --requests=20 --concurrency=10   
 ````
 
 ### Installation
