@@ -1,8 +1,5 @@
 <h1>Go Load Testing CLI Application</h1>
-
-````
 This Go application performs load testing on a web service by sending HTTP requests and generating a report based on the results. The user specifies the URL of the service, the total number of requests, and the level of concurrency.
-````
 
 ### Features
 - Configurable URL for load testing
@@ -16,8 +13,8 @@ This Go application performs load testing on a web service by sending HTTP reque
 - Distribution of other HTTP status codes
 
 ### Requirements
-Docker
-Go 1.22.3 or later (if running locally without Docker)
+- Docker
+- Go 1.22.3 or later (if running locally without Docker)
 
 ### Usage
 You can use this application via Docker. Example command:
@@ -30,15 +27,15 @@ docker run stresser --url=http://example.com --requests=1000 --concurrency=10
 1. Clone the repository:
 
     ````
-    git clone <repository-url>
-    cd <repository-directory>
+    git clone https://github.com/renatafborges/stress-test-golang
+    cd stress-test-golang
     ````
 
 
 2. Build the Docker image:
 
     ````
-    docker build -t go-load-tester .
+    docker build -t stresser .
     ````
 
 <h1>Running the Application</h1>
@@ -46,7 +43,7 @@ docker run stresser --url=http://example.com --requests=1000 --concurrency=10
 ### Run the Docker container with the required parameters:
 
 ````
-docker run go-load-tester --url=http://example.com --requests=1000 --concurrency=10
+docker run stresser --url=http://example.com --requests=1000 --concurrency=10
 ````
 
 <h1>Implementation Details</h1>
