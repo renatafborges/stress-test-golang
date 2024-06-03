@@ -38,6 +38,10 @@ func MakeStressTest(url string, requests int, concurrency int64) {
 			defer wg.Done()
 
 			resp, err := http.Get(url)
+			if err != nil {
+				slog.Error("unable to make request", "error", err)
+				return
+			}
 
 			scc.Lock()
 			_, exist := scc.statusCodeCount[resp.StatusCode]
