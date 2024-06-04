@@ -2,6 +2,7 @@ package processor
 
 import (
 	"context"
+	"crypto/tls"
 	"fmt"
 	"log/slog"
 	"net/http"
@@ -37,7 +38,15 @@ func MakeStressTest(url string, requests int, concurrency int64) {
 			defer sem.Release(1)
 			defer wg.Done()
 
-			resp, err := http.Get(url)
+			tr := &http.Transport{
+				TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+			}
+
+			client := http.Client{
+				Transport: tr,
+			}
+
+			resp, err := client.Get(url)
 			if err != nil {
 				slog.Error("unable to make request", "error", err)
 				return
